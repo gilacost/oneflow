@@ -16,8 +16,8 @@ end
 
 ```elixir
 config :oneflow_ex,
-  app_id: "TOKEN",
-  app_secret: "SECRET",
+  token: "TOKEN",
+  secret: "SECRET",
   log: true,
   endpoint: "https://API-URL/api",
   http: [] # these will be passed to hackney

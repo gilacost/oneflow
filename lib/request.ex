@@ -72,13 +72,13 @@ defmodule OneflowEx.Request do
     %URI{ path: path } = URI.parse(req.path)
     url_without_query_params = "/api#{path}"
     string_to_sign = "#{String.upcase(Atom.to_string(req.method))} #{url_without_query_params} #{timestamp}"
-    hmac = :crypto.hmac(:sha, Config.app_secret, string_to_sign ) |> Base.encode16 |> String.downcase
+    hmac = :crypto.hmac(:sha, Config.secret, string_to_sign ) |> Base.encode16 |> String.downcase
     if Config.log? do
-      Logger.log(:info, "[oneflow_ex][app_secret] #{Config.app_secret}")
+      Logger.log(:info, "[oneflow_ex][app_secret] #{Config.secret}")
       Logger.log(:info, "[oneflow_ex][string_to_sign] #{string_to_sign}")
       Logger.log(:info, "[oneflow_ex][hmac] #{hmac}")
     end
-		"#{Config.app_id}:#{hmac}"
+		"#{Config.token}:#{hmac}"
   end
 
 end

@@ -26,6 +26,7 @@ defmodule OneflowEx.SubmitOrderExample do
     address1 = "ADDRESS-1"
     address2 = "ADDRESS-2"
     town = "TOWN"
+    state = "STATE"
     postcode = "POSTCODE"
     iso_country = "ISO // GB"
 

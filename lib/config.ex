@@ -10,12 +10,12 @@ defmodule OneflowEx.Config do
     Application.get_env(:oneflow_ex, :http, [])
   end
 
-  def app_id do
-    Application.get_env(:oneflow_ex, :app_id, nil)
+  def token do
+    Application.get_env(:oneflow_ex, :token, nil)
   end
 
-  def app_secret do
-    Application.get_env(:oneflow_ex, :app_secret, nil)
+  def secret do
+    Application.get_env(:oneflow_ex, :secret, nil)
   end
 
   def log? do
