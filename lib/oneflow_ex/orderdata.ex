@@ -5,9 +5,9 @@ defmodule OneflowEx.OrderData do
     items: [],
     printType: "digital",
     sourceOrderId: nil,
-    email: "help@thebookofeveryone.com",
     amount: 0,
-    customerName: "Book of Everyone"
+    email: "",
+    customerName: ""
   ]
 
 end

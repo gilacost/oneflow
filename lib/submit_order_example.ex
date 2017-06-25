@@ -5,14 +5,15 @@ defmodule OneflowEx.SubmitOrderExample do
     Component,
     Address,
     Carrier,
-    Shipment
+    Shipment,
+    OrderData
   }
   def send() do
 
     order_id = :rand.uniform(9999999999)
-
-    IO.inspect order_id
-
+    IO.inspect "Order id: #{order_id}"
+    customer_name = "CUSTOMER-NAME"
+    email = "CUSTOMER-NAME"
     destination = "DESTINATION"
     order_id = order_id
     item_id = "item-#{order_id}"
@@ -22,7 +23,7 @@ defmodule OneflowEx.SubmitOrderExample do
     component_code = "COMPONENT-CODE" #"text"
     carrier_code = "CARRIER-CODE"
     carrier_service = "CARRIER-SERVICE"
-    name = "CUSTOMER NAME"
+    name = "NAME"
     address1 = "ADDRESS-1"
     address2 = "ADDRESS-2"
     town = "TOWN"
@@ -31,7 +32,12 @@ defmodule OneflowEx.SubmitOrderExample do
     iso_country = "ISO // GB"
 
     order = Order.create_order(destination)
-    order = put_in(order.orderData.sourceOrderId, order_id)
+    order_data = %OrderData {
+      sourceOrderId: order_id,
+      email: email,
+      customerName: customer_name
+    }
+    order = put_in(order.orderData, order_data)
     item = %Item{
       sku: sku_code,
       quantity: quantity,
