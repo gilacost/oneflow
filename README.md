@@ -34,8 +34,6 @@ config :oneflow_ex,
 {:ok, result} = OnflowEx.search("query", "shipments", ["status:shipped])
 ```
 
-```
-
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/zuck](https://hexdocs.pm/zuck).
+be found at [https://hexdocs.pm/oneflow_ex](https://hexdocs.pm/oneflow_ex).
