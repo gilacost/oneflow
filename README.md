@@ -27,7 +27,7 @@ config :oneflow_ex,
 ## Usage
 
 
-### Basic example
+### Basic examples
 
 ```elixir
 {:ok, order} = OnflowEx.get("/order/ORDER-ID", %{})
