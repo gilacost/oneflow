@@ -15,19 +15,6 @@ defmodule OneflowEx do
   ]
 
 
-  @moduledoc """
-  Documentation for OneflowEx.
-  """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> OneflowEx.hello
-      :world
-
-  """
   def get!(path, params \\ %{}, opts \\ []) do
     case get(path, params, opts) do
       {:ok, res} -> res
@@ -62,7 +49,7 @@ defmodule OneflowEx do
 
     headers = [
       {"Accept", "application/json"},
- 		  {"x-oneflow-date", timestamp},
+      {"x-oneflow-date", timestamp},
       {"x-oneflow-authorization", Request.generate_token(req, timestamp)}
     ]
 
@@ -70,7 +57,7 @@ defmodule OneflowEx do
       Logger.log(:info, "[oneflow_ex] #{req.method} #{String.trim_trailing(req.path, "/")} #{inspect req.params}")
       Logger.log(:info, "[oneflow_ex][headers] #{inspect headers}")
       Logger.log(:info, "[oneflow_ex][url] #{url}")
-      Logger.log(:info, "[oneflow_ex][body] #{IO.puts body}")
+      Logger.log(:info, "[oneflow_ex][body] #{inspect body}")
     end
 
     with {:ok, status, headers, body_ref} <- :hackney.request(req.method, url, headers, body, req.http_opts),
