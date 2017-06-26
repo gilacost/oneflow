@@ -30,8 +30,8 @@ config :oneflow_ex,
 ### Basic examples
 
 ```elixir
-{:ok, order} = OnflowEx.get("/order/ORDER-ID", %{})
-{:ok, result} = OnflowEx.search("query", "shipments", ["status:shipped])
+{:ok, order} = OnfelowEx.get("/order/ORDER-ID", %{})
+{:ok, result} = OnfelowEx.search("query", "shipments", ["status:shipped])
 ```
 
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
