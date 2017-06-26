@@ -1,5 +1,7 @@
 defmodule OneflowEx.Component do
 
+  use OneflowEx.Encoder
+
   @enforce_keys [ :code, :path]
 
   defstruct [

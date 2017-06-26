@@ -1,5 +1,7 @@
 defmodule OneflowEx.Carrier do
 
+  use OneflowEx.Encoder
+
   @enforce_keys [ :code, :service ]
 
   defstruct [
@@ -7,4 +9,5 @@ defmodule OneflowEx.Carrier do
     service: nil,
     alias: nil
   ]
+
 end

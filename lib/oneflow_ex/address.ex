@@ -1,5 +1,7 @@
 defmodule OneflowEx.Address do
 
+  use OneflowEx.Encoder
+
   @enforce_keys [ :name, :address1, :town, :postcode, :isoCountry ]
 
   defstruct [

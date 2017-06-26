@@ -1,5 +1,7 @@
 defmodule OneflowEx.Item do
 
+  use OneflowEx.Encoder
+
   @enforce_keys [ :sourceItemId, :sku]
 
   defstruct [

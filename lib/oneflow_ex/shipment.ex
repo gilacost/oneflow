@@ -1,5 +1,7 @@
 defmodule OneflowEx.Shipment do
 
+  use OneflowEx.Encoder
+
   defstruct [
     sourceShipmentId: nil,
     shipmentIndex: nil,
