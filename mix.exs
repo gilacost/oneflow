@@ -7,6 +7,7 @@ defmodule OneflowEx.Mixfile do
      elixir: "~> 1.4",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
+     package: package,
      deps: deps()]
   end
 
@@ -34,4 +35,14 @@ defmodule OneflowEx.Mixfile do
       {:httpoison, "~> 0.11.1"}
     ]
   end
+
+  defp package do
+    [
+      files: ["lib/*", "mix.exs", "README", "LICENSE*"],
+      maintainers: ["Josep Lluis Giralt D'Lacoste"],
+      licenses: ["MIT License"],
+      links: %{"GitHub" => "https://github.com/gilacost/oneflow_ex"}
+    ]
+  end
+
 end
