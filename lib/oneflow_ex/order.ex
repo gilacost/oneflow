@@ -1,18 +1,23 @@
 defmodule OneflowEx.Order do
   alias OneflowEx.{Destination, OrderData}
+  alias __MODULE__
 
   defstruct [
-    destination: %Destination{},
-    orderData: %OrderData{}
-  ]
-  def new(destination \\ "") do
-    %__MODULE__{
-      destination: %Destination{ name: destination}
+    destination: %Destination{
+      name: ""
+    },
+    orderData: %OrderData{
+      sourceOrderId: "",
+      email: ""
     }
-  end
+  ]
 
   def create_order(destination) do
-    new(destination)
+    %__MODULE__{
+      destination: %Destination{
+        name: destination
+      }
+    }
   end
 
 end

@@ -34,6 +34,22 @@ config :oneflow_ex,
 {:ok, result} = OnfelowEx.search("query", "shipments", ["status:shipped])
 ```
 
+### Safety net
+
+To be sure that the required fields are set before placing an order,
+Surround any structs creation that you implement with a try catch like this:
+
+
+```elixir
+try do
+   %OneflowEx.Destination{ name: "awesomePrinter" }
+ ....
+rescue
+   e in ArgumentError -> IO.inspect e
+   e in KeyError -> IO.inspect e
+end
+```
+
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/oneflow_ex](https://hexdocs.pm/oneflow_ex).

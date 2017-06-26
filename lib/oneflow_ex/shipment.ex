@@ -1,10 +1,15 @@
 defmodule OneflowEx.Shipment do
 
   defstruct [
-    shipmentIndex: 0,
+    sourceShipmentId: nil,
+    shipmentIndex: nil,
+    shipByDate: nil,
+    canShipEarly: true,
+    cost: nil,
+    attachments: nil,
     shipTo: nil,
     carrier: nil,
-    pspBranding: true
+    returnAddress: nil,
   ]
 
 end
