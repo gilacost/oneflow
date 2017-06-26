@@ -38,7 +38,7 @@ defmodule OneflowEx.Mixfile do
 
   defp package do
     [
-      files: ["lib"],
+      files: ["lib/models/*"],
       maintainers: ["Josep Lluis Giralt D'Lacoste"],
       licenses: ["MIT License"],
       links: %{"GitHub" => "https://github.com/gilacost/oneflow_ex"}
