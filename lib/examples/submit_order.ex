@@ -27,7 +27,7 @@ defmodule OneflowEx.Examples.SubmitOrder do
       }
 
       #carrier
-      # This will change depending on your account
+      # This will change depending on your account settings
       carrier = %Carrier{
         code: "CARRIER-CODE",
         service: "CARRIER-NAME",
@@ -41,7 +41,8 @@ defmodule OneflowEx.Examples.SubmitOrder do
         shipTo: shipTo,
         carrier: carrier
       }
-      #item
+     #item
+     # This will change depending on your account settings
       item = %Item{
         shipmentIndex: 0,
         sourceItemId: "SOURCE-ITEM-ID",
@@ -63,6 +64,9 @@ defmodule OneflowEx.Examples.SubmitOrder do
           }
         ]
       }
+
+      # Stock Items
+      # This will change depending on your account settings
       stockItems = [
         %StockItem{
           code: "STOCK-ITEM-CODE-1",
@@ -77,6 +81,7 @@ defmodule OneflowEx.Examples.SubmitOrder do
       ]
 
       #orderData
+      # This will change depending on your account settings
       orderData = %OrderData{
         shipments: [shipment],
         items: [item],
@@ -93,6 +98,7 @@ defmodule OneflowEx.Examples.SubmitOrder do
       #postbackMethod: "http",
 
       #destination
+      # This will change depending on your account settings
       destination = %Destination{
         name: "PRINTER-NAME"
       }
