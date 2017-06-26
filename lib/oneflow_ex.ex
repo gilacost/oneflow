@@ -1,5 +1,6 @@
 defmodule OneflowEx do
   alias OneflowEx.{Config, Request, Order}
+  alias HTTPoison.Response
 
   require Logger
 
@@ -44,7 +45,8 @@ defmodule OneflowEx do
     body = Request.body(req)
     qs = Request.query_string(req)
 
-    url = :hackney_url.make_url(Config.endpoint, req.path, qs)
+    url = "#{Config.endpoint}#{req.path}#{qs}"
+
     timestamp = :os.system_time(:seconds)
 
     headers = [
@@ -60,11 +62,10 @@ defmodule OneflowEx do
       Logger.log(:info, "[oneflow_ex][body] #{inspect body}")
     end
 
-    with {:ok, status, headers, body_ref} <- :hackney.request(req.method, url, headers, body, req.http_opts),
-         {:ok, body} <- :hackney.body(body_ref),
-         {:ok, parsed_body} <- Poison.decode(body, keys: :atoms) do
+    with {:ok, %Response{ body: body, status_code: status_code }} <- HTTPoison.request(req.method, url, body, headers, req.http_opts),
+         {:ok, parsed_body } <- Poison.decode(body, keys: :atoms) do
 
-      case status do
+      case status_code do
         200 -> {:ok, parsed_body}
         _   -> {:error, parsed_body}
       end

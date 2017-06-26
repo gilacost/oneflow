@@ -15,7 +15,7 @@ defmodule OneflowEx.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     # Specify extra applications you'll use from Erlang/Elixir
-    [extra_applications: [:logger]]
+    [extra_applications: [:logger, :httpoison]]
   end
 
   # Dependencies can be Hex packages:
@@ -31,7 +31,7 @@ defmodule OneflowEx.Mixfile do
     [
       {:ex_doc, ">= 0.0.0", only: :dev},
       {:poison, "~> 3.0 or ~> 2.0"},
-      {:hackney, "~> 1.8.0"}
+      {:httpoison, "~> 0.11.1"}
     ]
   end
 end
