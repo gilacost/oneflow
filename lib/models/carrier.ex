@@ -5,9 +5,9 @@ defmodule OneflowEx.Models.Carrier do
   @enforce_keys [ :code, :service ]
 
   defstruct [
-    code: nil,
-    service: nil,
-    alias: nil
+    :code,
+    :service,
+    :alias
   ]
 
 end

@@ -5,19 +5,19 @@ defmodule OneflowEx.Models.OrderData do
   @enforce_keys [ :sourceOrderId, :email ]
 
   defstruct [
-    printType: "digital",
-    sourceOrderId: nil,
-    email: nil,
-    misCode: nil,
-    customerName: nil,
-    amount: 0,
-    purchaseOrderNumber: nil,
-    tags: nil,
-    extraData: nil,
-    additionalInformation: nil,
-    items: nil,
-    stockItems: nil,
-    shipments: nil
+    :printType,
+    :sourceOrderId,
+    :email,
+    :misCode,
+    :customerName,
+    :amount,
+    :purchaseOrderNumber,
+    :tags,
+    :extraData,
+    :additionalInformation,
+    :items,
+    :stockItems,
+    :shipments
   ]
 
 end

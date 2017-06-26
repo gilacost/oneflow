@@ -2,23 +2,23 @@ defmodule OneflowEx.Models.Component do
 
   use OneflowEx.Models.Encoder
 
-  @enforce_keys [ :code, :path]
+  @enforce_keys [ :code, :path ]
 
   defstruct [
-    code: nil ,
-    path: nil ,
-    fetch: false,
-    localFile: false,
-    preflight: false,
-    sourceComponentId: nil,
-    paper: nil,
-    weight: "90gsms",
-    heigh: nil,
-    pages: 1,
-    dpulicate: 1,
-    barcode: nil,
-    attributes: nil,
-    extraData: nil,
+    :code,
+    :path,
+    :fetch,
+    :localFile,
+    :preflight,
+    :sourceComponentId,
+    :paper,
+    :weight,
+    :heigh,
+    :pages,
+    :duplicate,
+    :barcode,
+    :attributes,
+    :extraData,
   ]
 
 end
