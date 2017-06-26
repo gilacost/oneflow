@@ -50,7 +50,7 @@ defmodule OneflowEx do
     timestamp = :os.system_time(:seconds)
 
     headers = [
-      {"Accept", "application/json"},
+      {"Content-Type", "application/json"},
       {"x-oneflow-date", timestamp},
       {"x-oneflow-authorization", Request.generate_token(req, timestamp)}
     ]
@@ -66,7 +66,7 @@ defmodule OneflowEx do
          {:ok, parsed_body } <- Poison.decode(body, keys: :atoms) do
 
       case status_code do
-        200 -> {:ok, parsed_body}
+        code when code in [200,201] -> {:ok, parsed_body}
         _   -> {:error, parsed_body}
       end
 

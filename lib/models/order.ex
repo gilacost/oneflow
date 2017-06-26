@@ -12,11 +12,9 @@ defmodule OneflowEx.Models.Order do
     }
   ]
 
-  def create_order(destination) do
+  def create_order(%Destination{} = destination) do
     %__MODULE__{
-      destination: %Destination{
-        name: destination
-      }
+      destination: destination
     }
   end
 

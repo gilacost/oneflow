@@ -1,20 +1,20 @@
-defmodule OneflowEx.Models.StockItems do
+defmodule OneflowEx.Models.StockItem do
 
   use OneflowEx.Models.Encoder
 
-  @enforce_keys [ :code, :quantity, :unitPrice, :weight ]
+  @enforce_keys [ :code, :quantity ]
 
   defstruct [
-    code: nil,
-    name: nil,
-    quantity: 1,
-    barcode: nil,
-    stockId: nil,
-    scanned: 0,
-    shipmentIndex: 0,
-    unitPrice: 0,
-    weight: 0,
-    sourceItemId: nil
+    :code,
+    :name,
+    :quantity,
+    :barcode,
+    :stockId,
+    :scanned,
+    :shipmentIndex,
+    :unitPrice,
+    :weight,
+    :sourceItemId
   ]
 
 end
