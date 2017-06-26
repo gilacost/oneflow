@@ -30,7 +30,7 @@ config :oneflow_ex,
 ### Basic examples
 
 ```elixir
-{:ok, order} = OnfelowEx.get("/order/ORDER-ID", %{})
+{:ok, order} = OnfelowEx.get("/order/ORDER-ID")
 {:ok, result} = OnfelowEx.search("query", "shipments", ["status:shipped])
 ```
 

@@ -1,5 +1,5 @@
-defmodule OneflowEx.SubmitOrderExample do
-  alias OneflowEx.{
+defmodule OneflowEx.Examples.SubmitOrder do
+  alias OneflowEx.Models.{
     Order,
     Item,
     Component,

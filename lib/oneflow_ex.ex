@@ -1,5 +1,5 @@
 defmodule OneflowEx do
-  alias OneflowEx.{Config, Request, Order}
+  alias OneflowEx.{Config, Http.Request, Models.Order}
   alias HTTPoison.Response
 
   require Logger

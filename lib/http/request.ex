@@ -1,4 +1,4 @@
-defmodule OneflowEx.Request do
+defmodule OneflowEx.Http.Request do
 
   alias OneflowEx.Config
   alias __MODULE__

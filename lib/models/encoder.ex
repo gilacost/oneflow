@@ -1,4 +1,4 @@
-defmodule OneflowEx.Encoder do
+defmodule OneflowEx.Models.Encoder do
   defmacro __using__(_) do
     quote do
       defimpl Poison.Encoder, for: __MODULE__ do

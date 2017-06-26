@@ -1,6 +1,6 @@
-defmodule OneflowEx.Carrier do
+defmodule OneflowEx.Models.Carrier do
 
-  use OneflowEx.Encoder
+  use OneflowEx.Models.Encoder
 
   @enforce_keys [ :code, :service ]
 

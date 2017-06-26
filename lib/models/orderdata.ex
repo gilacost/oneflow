@@ -1,6 +1,6 @@
-defmodule OneflowEx.OrderData do
+defmodule OneflowEx.Models.OrderData do
 
-  use OneflowEx.Encoder
+  use OneflowEx.Models.Encoder
 
   @enforce_keys [ :sourceOrderId, :email ]
 

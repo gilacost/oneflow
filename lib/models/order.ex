@@ -1,5 +1,5 @@
-defmodule OneflowEx.Order do
-  alias OneflowEx.{Destination, OrderData}
+defmodule OneflowEx.Models.Order do
+  alias OneflowEx.Models.{Destination, OrderData}
   alias __MODULE__
 
   defstruct [
