@@ -34,7 +34,7 @@ config :oneflow_ex,
 {:ok, result} = OnfelowEx.search("query", "shipments", ["status:shipped])
 ```
 
-### Safety net
+## Safety net
 
 To be sure that the required fields are set before placing an order,
 Surround any structs creation that you implement with a try catch like this:
