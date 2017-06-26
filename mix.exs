@@ -7,7 +7,7 @@ defmodule OneflowEx.Mixfile do
      elixir: "~> 1.4",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     package: package,
+     package: package(),
      deps: deps()]
   end
 
@@ -38,7 +38,6 @@ defmodule OneflowEx.Mixfile do
 
   defp package do
     [
-      files: ["lib"],
       maintainers: ["Josep Lluis Giralt D'Lacoste"],
       licenses: ["MIT License"],
       links: %{"GitHub" => "https://github.com/gilacost/oneflow_ex"}
