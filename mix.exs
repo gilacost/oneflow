@@ -2,15 +2,24 @@ defmodule Oneflow.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :oneflow,
+    [
+     name: "Oneflow",
+     description: "Onflow SDK that manages authentication and includes several structs for order management",
+     app: :oneflow,
      version: "0.1.0",
      elixir: "~> 1.4",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      package: package(),
-     deps: deps()]
+     deps: deps(),
+     preferred_cli_env: [
+       "coveralls": :test,
+       "coveralls.html": :test,
+       "coveralls.travis": :test
+     ],
+     test_coverage: [tool: ExCoveralls]
+    ]
   end
-
   # Configuration for the OTP application
   #
   # Type "mix help compile.app" for more information
@@ -31,6 +40,7 @@ defmodule Oneflow.Mixfile do
   defp deps do
     [
       {:ex_doc, ">= 0.0.0", only: :dev},
+      {:excoveralls, "~> 0.6.3", only: [:test]},
       {:poison, "~> 3.0 or ~> 2.0"},
       {:httpoison, "~> 0.11.1"}
     ]
