@@ -23,7 +23,6 @@ config :oneflow,
   secret: "SECRET",
   log: true,
   endpoint: "https://API-URL/api",
-  http: [] # these will be passed to hackney
 ```
 
 
