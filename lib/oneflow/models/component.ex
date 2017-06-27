@@ -1,6 +1,6 @@
-defmodule OneflowEx.Models.Component do
+defmodule Oneflow.Models.Component do
 
-  use OneflowEx.Models.Encoder
+  use Oneflow.Models.Encoder
 
   @enforce_keys [ :code, :path ]
 

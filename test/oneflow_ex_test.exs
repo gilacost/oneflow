@@ -1,6 +1,6 @@
-defmodule OneflowExTest do
+defmodule OneflowTest do
   use ExUnit.Case
-  doctest OneflowEx
+  doctest Oneflow
 
   test "the truth" do
     assert 1 + 1 == 2

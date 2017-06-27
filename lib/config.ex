@@ -1,25 +1,25 @@
-defmodule OneflowEx.Config do
+defmodule Oneflow.Config do
 
   @endpoint "https://pro-api.oneflowcloud.com/api"
 
   def endpoint() do
-    Application.get_env(:oneflow_ex, :endpoint, @endpoint)
+    Application.get_env(:oneflow, :endpoint, @endpoint)
   end
 
   def http() do
-    Application.get_env(:oneflow_ex, :http, [])
+    Application.get_env(:oneflow, :http, [])
   end
 
   def token do
-    Application.get_env(:oneflow_ex, :token, nil)
+    Application.get_env(:oneflow, :token, nil)
   end
 
   def secret do
-    Application.get_env(:oneflow_ex, :secret, nil)
+    Application.get_env(:oneflow, :secret, nil)
   end
 
   def log? do
-    Application.get_env(:oneflow_ex, :log, true)
+    Application.get_env(:oneflow, :log, true)
   end
 
 end

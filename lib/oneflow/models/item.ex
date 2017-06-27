@@ -1,6 +1,6 @@
-defmodule OneflowEx.Models.Item do
+defmodule Oneflow.Models.Item do
 
-  use OneflowEx.Models.Encoder
+  use Oneflow.Models.Encoder
 
   @enforce_keys [ :sourceItemId, :sku]
 

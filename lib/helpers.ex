@@ -1,4 +1,4 @@
-defmodule OneflowEx.Helpers do
+defmodule Oneflow.Helpers do
 
   def remove_nil_values(map) do
     map

@@ -1,13 +1,13 @@
-# OneflowEx
+# Oneflow
 
 ## Installation
 
 The package can be installed
-by adding `oneflow_ex` to your list of dependencies in `mix.exs`:
+by adding `oneflow` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:oneflow_ex, git: "https://github.com/gilacost/oneflow_ex.git"}}]
+  [{:oneflow, git: "https://github.com/gilacost/oneflow.git"}}]
 end
 ```
 
@@ -15,7 +15,7 @@ end
 ## Configuration
 
 ```elixir
-config :oneflow_ex,
+config :oneflow,
   token: "TOKEN",
   secret: "SECRET",
   log: true,
@@ -30,8 +30,8 @@ config :oneflow_ex,
 ### Basic examples
 
 ```elixir
-{:ok, order} = OnefelowEx.get("/order/ORDER-ID")
-{:ok, result} = OnefelowEx.search("query", "shipments", ["status:shipped])
+{:ok, order} = Onefelow.get("/order/ORDER-ID")
+{:ok, result} = Onefelow.search("query", "shipments", ["status:shipped])
 ```
 
 ## Safety net
@@ -42,7 +42,7 @@ Surround any structs creation that you implement with a try catch like this:
 
 ```elixir
 try do
-   %OneflowEx.Destination{ name: "awesomePrinter" }
+   %Oneflow.Destination{ name: "awesomePrinter" }
  ....
 rescue
    e in ArgumentError -> IO.inspect e
@@ -52,4 +52,4 @@ end
 
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/oneflow_ex](https://hexdocs.pm/oneflow_ex).
+be found at [https://hexdocs.pm/oneflow](https://hexdocs.pm/oneflow).

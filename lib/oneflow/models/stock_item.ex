@@ -1,6 +1,6 @@
-defmodule OneflowEx.Models.StockItem do
+defmodule Oneflow.Models.StockItem do
 
-  use OneflowEx.Models.Encoder
+  use Oneflow.Models.Encoder
 
   @enforce_keys [ :code, :quantity ]
 

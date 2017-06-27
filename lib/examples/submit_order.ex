@@ -1,5 +1,5 @@
-defmodule OneflowEx.Examples.SubmitOrder do
-  alias OneflowEx.Models.{
+defmodule Oneflow.Examples.SubmitOrder do
+  alias Oneflow.Models.{
     Order,
     Item,
     Component,
@@ -106,7 +106,7 @@ defmodule OneflowEx.Examples.SubmitOrder do
       #order
       order = Order.create_order(destination)
       put_in(order.orderData, orderData)
-      |> OneflowEx.submit_order
+      |> Oneflow.submit_order
       |> IO.inspect
 
     rescue

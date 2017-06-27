@@ -1,5 +1,5 @@
-defmodule OneflowEx do
-  alias OneflowEx.{Config, Http.Request, Models.Order}
+defmodule Oneflow do
+  alias Oneflow.{Config, Http.Request, Models.Order}
   alias HTTPoison.Response
 
   require Logger
@@ -56,10 +56,10 @@ defmodule OneflowEx do
     ]
 
     if Config.log? do
-      Logger.log(:info, "[oneflow_ex] #{req.method} #{String.trim_trailing(req.path, "/")} #{inspect req.params}")
-      Logger.log(:info, "[oneflow_ex][headers] #{inspect headers}")
-      Logger.log(:info, "[oneflow_ex][url] #{url}")
-      Logger.log(:info, "[oneflow_ex][body] #{inspect body}")
+      Logger.log(:info, "[oneflow] #{req.method} #{String.trim_trailing(req.path, "/")} #{inspect req.params}")
+      Logger.log(:info, "[oneflow][headers] #{inspect headers}")
+      Logger.log(:info, "[oneflow][url] #{url}")
+      Logger.log(:info, "[oneflow][body] #{inspect body}")
     end
 
     with {:ok, %Response{ body: body, status_code: status_code }} <- HTTPoison.request(req.method, url, body, headers, req.http_opts),

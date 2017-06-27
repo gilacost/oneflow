@@ -1,6 +1,6 @@
-defmodule OneflowEx.Http.Request do
+defmodule Oneflow.Http.Request do
 
-  alias OneflowEx.Config
+  alias Oneflow.Config
   alias __MODULE__
 
   require Logger
@@ -74,11 +74,11 @@ defmodule OneflowEx.Http.Request do
     string_to_sign = "#{String.upcase(Atom.to_string(req.method))} #{url_without_query_params} #{timestamp}"
     hmac = :crypto.hmac(:sha, Config.secret, string_to_sign ) |> Base.encode16 |> String.downcase
     if Config.log? do
-      Logger.log(:info, "[oneflow_ex][app_secret] #{Config.secret}")
-      Logger.log(:info, "[oneflow_ex][string_to_sign] #{string_to_sign}")
-      Logger.log(:info, "[oneflow_ex][hmac] #{hmac}")
+      Logger.log(:info, "[oneflow][app_secret] #{Config.secret}")
+      Logger.log(:info, "[oneflow][string_to_sign] #{string_to_sign}")
+      Logger.log(:info, "[oneflow][hmac] #{hmac}")
     end
-		"#{Config.token}:#{hmac}"
+    "#{Config.token}:#{hmac}"
   end
 
 end

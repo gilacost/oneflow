@@ -1,8 +1,8 @@
-defmodule OneflowEx.Mixfile do
+defmodule Oneflow.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :oneflow_ex,
+    [app: :oneflow,
      version: "0.1.0",
      elixir: "~> 1.4",
      build_embedded: Mix.env == :prod,
@@ -40,7 +40,7 @@ defmodule OneflowEx.Mixfile do
     [
       maintainers: ["Josep Lluis Giralt D'Lacoste"],
       licenses: ["MIT"],
-      links: %{"GitHub" => "https://github.com/gilacost/oneflow_ex"}
+      links: %{"GitHub" => "https://github.com/gilacost/oneflow"}
     ]
   end
 

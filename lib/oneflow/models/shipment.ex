@@ -1,6 +1,6 @@
-defmodule OneflowEx.Models.Shipment do
+defmodule Oneflow.Models.Shipment do
 
-  use OneflowEx.Models.Encoder
+  use Oneflow.Models.Encoder
 
   defstruct [
     :sourceShipmentId,
