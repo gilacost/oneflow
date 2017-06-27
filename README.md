@@ -1,5 +1,8 @@
 # Oneflow
 
+[![Build Status](https://travis-ci.org/gilacost/oneflow.svg?branch=master)](https://travis-ci.org/sticksnleaves/oneflow)
+<!-- [![Coverage Status](https://coveralls.io/repos/github/gilacost/oneflow/badge.svg?branch=master)](https://coveralls.io/github/gilacost/oneflow?branch=master) -->
+
 ## Installation
 
 The package can be installed
