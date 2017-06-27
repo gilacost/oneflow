@@ -1,6 +1,5 @@
 defmodule Oneflow.Models.Order do
   alias Oneflow.Models.{Destination, OrderData}
-  alias __MODULE__
 
   defstruct [
     destination: %Destination{
