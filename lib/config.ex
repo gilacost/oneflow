@@ -6,10 +6,6 @@ defmodule Oneflow.Config do
     Application.get_env(:oneflow, :endpoint, @endpoint)
   end
 
-  def http() do
-    Application.get_env(:oneflow, :http, [])
-  end
-
   def token do
     Application.get_env(:oneflow, :token, nil)
   end

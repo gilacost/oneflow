@@ -24,7 +24,7 @@ defmodule Oneflow do
   end
 
   defp get(path, params, opts) do
-    Request.new(:get, path, params, opts)
+    Request.new(:get, path, params, [] , opts)
     |> call
   end
 

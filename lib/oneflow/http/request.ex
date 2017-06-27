@@ -6,27 +6,16 @@ defmodule Oneflow.Http.Request do
   require Logger
 
   defstruct [
-    :method, :path, :params, :body, :http_opts, :opts
+    :method, :path, :params, :body, :opts
   ]
 
-  def get(path, params, opts \\ []) do
-    new(:get, path, params, opts)
-  end
-
-  def post(path, params, opts \\ []) do
-    new(:post, path, params, opts)
-  end
-
   def new(method, path, params, payload \\ [], opts \\ []) do
-    http_opts = Keyword.get(opts, :http_opts, Config.http)
-
     %__MODULE__{
       method: method,
       path: path,
       params: params,
       body: payload,
-      opts: opts,
-      http_opts: http_opts
+      opts: opts
     }
   end
 
@@ -50,17 +39,14 @@ defmodule Oneflow.Http.Request do
     Enum.flat_map(req.params, &encode_param/1)
   end
 
-  def body(%Request{method: :get} = req) do
-    []
-  end
   def body(%Request{} = req) do
     Poison.encode!(req.body)
   end
 
-  def query_string(%Request{method: :get} = req) do
+  def query_string(%Request{method: method} = req) when method in [:get, :post] do
     encode_params(req)
   end
-  def query_string(%Request{} = req) do
+  def query_string(%Request{}) do
     []
   end
 
