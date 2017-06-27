@@ -54,17 +54,4 @@ defmodule Oneflow.Http.Request do
     %Request{ req | params: Map.merge(req.params, params)}
   end
 
-  def generate_token(%Request{} = req, timestamp) do
-    %URI{ path: path } = URI.parse(req.path)
-    url_without_query_params = "/api#{path}"
-    string_to_sign = "#{String.upcase(Atom.to_string(req.method))} #{url_without_query_params} #{timestamp}"
-    hmac = :crypto.hmac(:sha, Config.secret, string_to_sign ) |> Base.encode16 |> String.downcase
-    if Config.log? do
-      Logger.log(:info, "[oneflow][app_secret] #{Config.secret}")
-      Logger.log(:info, "[oneflow][string_to_sign] #{string_to_sign}")
-      Logger.log(:info, "[oneflow][hmac] #{hmac}")
-    end
-    "#{Config.token}:#{hmac}"
-  end
-
 end

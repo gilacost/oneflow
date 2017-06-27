@@ -1,5 +1,5 @@
 defmodule Oneflow do
-  alias Oneflow.{Config, Http.Request, Models.Order}
+  alias Oneflow.{Config, Http.Request, Http.Authorization, Models.Order}
   alias HTTPoison.Response
 
   require Logger
@@ -52,7 +52,7 @@ defmodule Oneflow do
     headers = [
       {"Content-Type", "application/json"},
       {"x-oneflow-date", timestamp},
-      {"x-oneflow-authorization", Request.generate_token(req, timestamp)}
+      {"x-oneflow-authorization", Authorization.header_value(req, timestamp)}
     ]
 
     if Config.log? do
@@ -82,5 +82,4 @@ defmodule Oneflow do
     body = order
     post!("/order", %{}, body)
   end
-
 end
