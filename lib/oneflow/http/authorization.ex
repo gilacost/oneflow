@@ -1,7 +1,10 @@
 defmodule Oneflow.Http.Authorization do
   alias Oneflow.{Http.Request, Config}
 
+  import Oneflow.Helpers, only: [prepend: 3]
+
   require Logger
+
   @moduledoc """
   This is the the module that allows generating the value for the
   x-oneflow-authorization header.
@@ -27,15 +30,11 @@ defmodule Oneflow.Http.Authorization do
 
   """
   def header_value(%Request{} = req, timestamp) do
-    hmac = req
+    req
     |> url_path
     |> generate_string_to_sign(req, timestamp)
     |> hmac
-    if Config.log? do
-      Logger.log(:info, "[oneflow][app_secret] #{Config.secret}")
-      Logger.log(:info, "[oneflow][hmac] #{hmac}")
-    end
-    "#{Config.token}:#{hmac}"
+    |> prepend("#{Config.token}:", :string)
   end
 
   # private
@@ -44,7 +43,7 @@ defmodule Oneflow.Http.Authorization do
     req.path
     |> URI.parse
     |> Map.get(:path, "")
-    |> String.replace_leading("/","/api/")
+    |> prepend("/api", :url)
   end
 
   defp generate_string_to_sign(url_path, %Request{} = req, timestamp) do

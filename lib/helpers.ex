@@ -7,4 +7,8 @@ defmodule Oneflow.Helpers do
     |> Enum.into(%{})
   end
 
+  def prepend( "/" <> string, prefix, :url ), do: "#{prefix}/#{string}"
+  def prepend( string, prefix, :url ), do: raise ArgumentError, message: "path must start with /"
+  def prepend( string, prefix, :string ), do: "#{prefix}#{string}"
+
 end
