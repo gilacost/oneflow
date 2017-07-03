@@ -62,7 +62,9 @@ defmodule Oneflow do
       Logger.log(:info, "[oneflow][body] #{inspect body}")
     end
 
-    with {:ok, %Response{ body: body, status_code: status_code }} <- HTTPoison.request(req.method, url, body, headers, req.http_opts),
+
+
+    with {:ok, %Response{ body: body, status_code: status_code }} <- HTTPoison.request(req.method, url, body, headers, req.opts),
          {:ok, parsed_body } <- Poison.decode(body, keys: :atoms) do
 
       case status_code do
