@@ -3,16 +3,18 @@ defmodule Models.AddressTest do
   use Oneflow.ModelCase
 
   @valid_attributes %{
-    name: "josep lluis",
-    companyName: "The Book of Everyone",
-    address1: "Plaça catalunya",
-    address2: "on els coloms",
-    address3: "2on floor",
-    town: "barcelona",
-    state: "barcelona",
-    postcode: "90098Z2H",
-    isoCountry: "CA",
-    phone: "604604604"
+    name: "Peter Pan",
+    companyName: "Disney Corporation",
+    address1: "17 Disney Way",
+    address2: "",
+    address3: "",
+    town: "Los Angeles",
+    postcode: "34757",
+    state: "California",
+    isoCountry: "US",
+    country: "United States of America",
+    email: "peter@disney.com",
+    phone: "+12345678910"
   }
 
   test "valid address returns a oneflow address struct" do
@@ -20,9 +22,12 @@ defmodule Models.AddressTest do
   end
 
   test "address without required fields" do
-    error_message = "the following keys must also be given when building struct Oneflow.Models.Address: [:name, :address1, :town, :postcode, :isoCountry]"
+    error_message = "#{@error_common} Oneflow.Models.Address: [:name, :address1, :town, :postcode, :isoCountry]"
     assert_raise ArgumentError, error_message, fn ->
       struct!(Address, %{})
     end
   end
+
+  def get_valid_attributes(), do: @valid_attributes
+
 end

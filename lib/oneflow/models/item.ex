@@ -14,6 +14,7 @@ defmodule Oneflow.Models.Item do
     :binding,
     :folding,
     :barcode,
+    :additionalInformation,
     :extraData,
     :tags,
     :components,

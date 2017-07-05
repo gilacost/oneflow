@@ -14,6 +14,8 @@ defmodule Oneflow.Models.Address do
     :state,
     :postcode,
     :isoCountry,
+    :country,
+    :email,
     :phone
   ]
 

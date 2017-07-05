@@ -14,6 +14,7 @@ defmodule Oneflow.Models.Component do
     :paper,
     :weight,
     :heigh,
+    :width,
     :pages,
     :duplicate,
     :barcode,

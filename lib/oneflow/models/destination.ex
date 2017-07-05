@@ -5,7 +5,6 @@ defmodule Oneflow.Models.Destination do
   @enforce_keys [:name]
 
   defstruct [
-    :id,
     :name
   ]
 
