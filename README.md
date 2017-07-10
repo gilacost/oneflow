@@ -10,7 +10,7 @@ by adding `oneflow` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:oneflow, git: "https://github.com/gilacost/oneflow.git"}]
+  [{:oneflow, "~> 0.1.0"}]
 end
 ```
 
