@@ -58,5 +58,5 @@ be found at [https://hexdocs.pm/oneflow](https://hexdocs.pm/oneflow).
 
 ## Useful endpoints
 
-/shipping-method
-/sku
+- /shipping-method
+- /sku
