@@ -20,7 +20,7 @@ defmodule Oneflow.Helpers do
   [camarera: 1]
   """
   def remove_nil_values(map) do
-    Enum.reject(map, fn({key, value}) -> value == nil end)
+    Enum.reject(map, fn({_key, value}) -> value == nil end)
   end
 
   @doc """
@@ -35,7 +35,7 @@ defmodule Oneflow.Helpers do
   "token:secret"
   """
   def prepend( "/" <> string, prefix, :url ), do: "#{prefix}/#{string}"
-  def prepend( string, prefix, :url ), do: raise ArgumentError, message: "path must start with /"
+  def prepend( _string, _prefix, :url ), do: raise ArgumentError, message: "path must start with /"
   def prepend( string, prefix, :string ), do: "#{prefix}#{string}"
 
 end

@@ -1,6 +1,5 @@
 defmodule Oneflow.Http.Request do
 
-  alias Oneflow.Config
   alias __MODULE__
 
   require Logger
