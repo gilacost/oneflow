@@ -4,6 +4,8 @@
 [![Hex package version](https://img.shields.io/hexpm/v/oneflow.svg)](https://hexdocs.pm/oneflow/api-reference.html)
 <!-- [![Coverage Status](https://coveralls.io/repos/github/gilacost/oneflow/badge.svg?branch=master)](https://coveralls.io/github/gilacost/oneflow?branch=master) -->
 
+The docs can be found at [https://hexdocs.pm/oneflow](https://hexdocs.pm/oneflow).
+
 ## Installation
 
 The package can be installed
@@ -52,10 +54,6 @@ rescue
    e in KeyError -> IO.inspect e
 end
 ```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/oneflow](https://hexdocs.pm/oneflow).
 
 ## Useful endpoints
 
