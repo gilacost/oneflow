@@ -4,7 +4,7 @@ defmodule Oneflow.Mixfile do
   def project do
     [
      name: "Oneflow",
-     description: "Onflow SDK that manages authentication and includes several structs for order management",
+     description: "Oneflow SDK that manages authentication and includes several structs for order management",
      app: :oneflow,
      version: "0.1.0",
      elixir: "~> 1.4",
