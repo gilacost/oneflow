@@ -6,17 +6,17 @@ defmodule Oneflow.Helpers do
 
   @doc """
   Removes any key value pair with a nil value in Enum. Given
-  the map `%{test: nil, camarera: 1}` it should return a map
+  the map `%{test: nil, key: 1}` it should return a map
   with jsut `camarera`.
 
   Returns `%{camarera: 1}`.
 
   ## Examples
 
-  iex> Oneflow.Helpers.remove_nil_values(%{test: nil, camarera: 1})
+  iex> Oneflow.Helpers.remove_nil_values(%{test: nil, key: 1})
   [camarera: 1]
 
-  iex> Oneflow.Helpers.remove_nil_values([test: nil, camarera: 1])
+  iex> Oneflow.Helpers.remove_nil_values([test: nil, key: 1])
   [camarera: 1]
   """
   def remove_nil_values(map) do
