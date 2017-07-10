@@ -18,7 +18,7 @@ defmodule Models.AddressTest do
   }
 
   test "valid address returns a oneflow address struct" do
-    assert address = struct!(Address, @valid_attributes)
+    assert struct!(Address, @valid_attributes)
   end
 
   test "address without required fields" do
