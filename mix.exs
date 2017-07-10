@@ -48,7 +48,7 @@ defmodule Oneflow.Mixfile do
 
   defp package do
     [
-      files: ["lib","README", "LICENSE*"],
+      files: ["lib","README.md", "LICENSE"],
       maintainers: ["Josep Lluis Giralt D'Lacoste"],
       licenses: ["MIT License"],
       links: %{"GitHub" => "https://github.com/gilacost/oneflow"}
