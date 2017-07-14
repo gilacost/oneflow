@@ -21,14 +21,16 @@ defmodule Oneflow.Http.Authorization do
   path is the same, the value must be the same.
 
   ## Examples
-
-  iex> Oneflow.Http.Authorization.header_value(%Oneflow.Http.Request{ method: :get, path: "/url"}, 498601557)
+  iex> request = %Oneflow.Http.Request{ method: :get, path: "/url"}
+  iex> Oneflow.Http.Authorization.header_value(request, 498601557)
   "token:6f88d384bd48daed9bf03efad5d5b5bdf89f3063"
 
-  iex> Oneflow.Http.Authorization.header_value(%Oneflow.Http.Request{ method: :get, path: "/url?foo=bar"}, 498601557)
+  iex> request = %Oneflow.Http.Request{ method: :get, path: "/url?foo=bar"}
+  iex> Oneflow.Http.Authorization.header_value(request, 498601557)
   "token:6f88d384bd48daed9bf03efad5d5b5bdf89f3063"
 
   """
+  @spec header_value(Request.t, integer) :: String.t
   def header_value(%Request{} = req, timestamp) do
     req
     |> url_path
@@ -39,6 +41,10 @@ defmodule Oneflow.Http.Authorization do
 
   # private
 
+  @doc """
+  Gets the url path and preppeds /api to it.
+  """
+  @spec url_path(Request.t) :: String.t
   defp url_path(%Request{} = req)  do
     req.path
     |> URI.parse
@@ -46,6 +52,11 @@ defmodule Oneflow.Http.Authorization do
     |> prepend("/api", :url)
   end
 
+  @doc """
+  Forms an string with http method, empty space, then path without query string,
+  then another empty space and then the timestamp.
+  """
+  @spec generate_string_to_sign(String.t, Request.t, integer) :: String.t
   defp generate_string_to_sign(url_path, %Request{} = req, timestamp) do
     req.method
     |> Atom.to_string
@@ -53,6 +64,10 @@ defmodule Oneflow.Http.Authorization do
     |> Kernel.<>(" #{url_path} #{timestamp}")
   end
 
+  @doc """
+  Hashes the given string given to sign using the config secret as key.
+  """
+  @spec hmac(String.t) :: String.t
   defp hmac(string_to_sign) do
     if Config.log?, do: Logger.log(:info, "[oneflow][string_to_sign] #{string_to_sign}")
     :sha

@@ -1,7 +1,7 @@
 defmodule Oneflow.Helpers do
 
   @moduledoc """
-  This module contains generic usful functions.
+  This module contains generic useful functions.
   """
 
   @doc """
@@ -19,6 +19,7 @@ defmodule Oneflow.Helpers do
   iex> Oneflow.Helpers.remove_nil_values([test: nil, key: 1])
   [key: 1]
   """
+  @spec remove_nil_values(Map.t) :: Enum.t
   def remove_nil_values(map) do
     Enum.reject(map, fn({_key, value}) -> value == nil end)
   end
@@ -34,6 +35,7 @@ defmodule Oneflow.Helpers do
   iex> Oneflow.Helpers.prepend("secret", "token:", :string)
   "token:secret"
   """
+  @spec prepend(String.t, String.t, atom ) :: String.t
   def prepend( "/" <> string, prefix, :url ), do: "#{prefix}/#{string}"
   def prepend( _string, _prefix, :url ), do: raise ArgumentError, message: "path must start with /"
   def prepend( string, prefix, :string ), do: "#{prefix}#{string}"
