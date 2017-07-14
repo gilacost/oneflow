@@ -28,14 +28,14 @@ defmodule Oneflow do
     |> call
   end
 
-  def post!(path, params \\ %{}, body \\ %{}, opts \\ []) do
-    case post(path, params, body, opts) do
+  def post!(path, body \\ %{}, params \\ %{}, opts \\ []) do
+    case post(path, body, params, opts) do
       {:ok, res} -> res
       {:error, err} -> raise inspect(err)
     end
   end
 
-  defp post(path, params, body, opts) do
+  defp post(path, body, params, opts) do
     Request.new(:post, path, params, body, opts)
     |> call
   end
@@ -43,9 +43,9 @@ defmodule Oneflow do
 
   def call(%Request{} = req) do
     body = Request.body(req)
-    qs = Request.query_string(req)
+    # qs = Request.query_string(req)
 
-    url = "#{Config.endpoint}#{req.path}#{qs}"
+    url = "#{Config.endpoint}#{req.path}"
 
     timestamp = :os.system_time(:seconds)
 
