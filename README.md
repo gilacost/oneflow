@@ -13,7 +13,7 @@ by adding `oneflow` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:oneflow, "~> 0.1.0"}]
+  [{:oneflow, "~> 0.1.2"}]
 end
 ```
 
