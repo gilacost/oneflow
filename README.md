@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/gilacost/oneflow.svg?branch=master)](https://travis-ci.org/gilacost/oneflow)
 [![Hex package version](https://img.shields.io/hexpm/v/oneflow.svg)](https://hexdocs.pm/oneflow/api-reference.html)
-<!-- [![Coverage Status](https://coveralls.io/repos/github/gilacost/oneflow/badge.svg?branch=master)](https://coveralls.io/github/gilacost/oneflow?branch=master) -->
+[![Coverage Status](https://coveralls.io/repos/github/gilacost/oneflow/badge.svg?branch=master)](https://coveralls.io/github/gilacost/oneflow?branch=master)
 
 The docs can be found at [https://hexdocs.pm/oneflow](https://hexdocs.pm/oneflow).
 
