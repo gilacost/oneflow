@@ -15,6 +15,7 @@ defmodule Oneflow do
     "clients"
   ]
 
+  @client Application.get_env(:oneflow, :client)
 
   def get!(path, params \\ %{}, opts \\ []) do
     case get(path, params, opts) do
@@ -64,7 +65,7 @@ defmodule Oneflow do
 
 
 
-    with {:ok, %Response{ body: body, status_code: status_code }} <- HTTPoison.request(req.method, url, body, headers, req.opts),
+    with {:ok, %Response{ body: body, status_code: status_code }} <- @client.request(req.method, url, body, headers, req.opts),
          {:ok, parsed_body } <- Poison.decode(body, keys: :atoms) do
 
       case status_code do
