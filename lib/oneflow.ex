@@ -83,6 +83,6 @@ defmodule Oneflow do
 
   def submit_order(%Order{} = order) do
     body = order
-    post!("/order", %{}, body)
+    post!("/order", body, %{})
   end
 end
