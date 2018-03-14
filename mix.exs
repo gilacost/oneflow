@@ -3,23 +3,25 @@ defmodule Oneflow.Mixfile do
 
   def project do
     [
-     name: "Oneflow",
-     description: "Oneflow SDK that manages authentication and includes several structs for order management",
-     app: :oneflow,
-     version: "0.1.2",
-     elixir: "~> 1.4",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     package: package(),
-     deps: deps(),
-     preferred_cli_env: [
-       "coveralls": :test,
-       "coveralls.html": :test,
-       "coveralls.travis": :test
-     ],
-     test_coverage: [tool: ExCoveralls]
+      name: "Oneflow",
+      description:
+        "Oneflow SDK that manages authentication and includes several structs for order management",
+      app: :oneflow,
+      version: "0.1.2",
+      elixir: "~> 1.6",
+      build_embedded: Mix.env() == :prod,
+      start_permanent: Mix.env() == :prod,
+      package: package(),
+      deps: deps(),
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.html": :test,
+        "coveralls.travis": :test
+      ],
+      test_coverage: [tool: ExCoveralls]
     ]
   end
+
   # Configuration for the OTP application
   #
   # Type "mix help compile.app" for more information
@@ -54,5 +56,4 @@ defmodule Oneflow.Mixfile do
       links: %{"GitHub" => "https://github.com/gilacost/oneflow"}
     ]
   end
-
 end
