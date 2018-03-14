@@ -44,7 +44,7 @@ defmodule Oneflow.Mixfile do
       {:ex_doc, ">= 0.0.0", only: :dev},
       {:excoveralls, "~> 0.6.3", only: [:test]},
       {:poison, "~> 3.0 or ~> 2.0"},
-      {:httpoison, "~> 0.11.1"}
+      {:httpoison, "~> 1.0 or ~> 0.11"}
     ]
   end
 
