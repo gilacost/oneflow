@@ -1,5 +1,5 @@
 defmodule Oneflow do
-  alias Oneflow.{Config, Http.Request, Http.Authorization, Models.Order}
+  alias Oneflow.{Config, Http.Request, Http.Authorization}
   alias HTTPoison.Response
 
   require Logger
@@ -43,17 +43,13 @@ defmodule Oneflow do
 
   def call(%Request{} = req) do
     body = Request.body(req)
-    # qs = Request.query_string(req)
 
     url = "#{Config.endpoint()}#{req.path}"
 
-    timestamp = :os.system_time(:seconds)
-
-    headers = [
-      {"Content-Type", "application/json"},
-      {"x-oneflow-date", timestamp},
-      {"x-oneflow-authorization", Authorization.header_value(req, timestamp)}
-    ]
+    headers =
+      Application.get_env(:oneflow, :auth_headers)
+      |> set_auth_headers(req)
+      |> Kernel.++([{"Content-Type", "application/json"}])
 
     if Config.log?() do
       Logger.log(
@@ -81,8 +77,18 @@ defmodule Oneflow do
     post!("/search/facet/#{topic}", %{}, body)
   end
 
-  def submit_order(%Order{} = order) do
+  def submit_order(order) do
     body = order
     post!("/order", body, %{})
   end
+
+  defp set_auth_headers(nil, req) do
+    timestamp = :os.system_time(:seconds)
+
+    [
+      {"x-oneflow-date", timestamp},
+      {"x-oneflow-authorization", Authorization.header_value(req, timestamp)}
+    ]
+  end
+  defp set_auth_headers(headers, _req), do: headers
 end

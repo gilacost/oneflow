@@ -11,13 +11,14 @@ defmodule Oneflow.ApiInMemory do
     ]
     |> IO.inspect()
 
-    %Response{
-      body:
-        Poison.encode(%{
-          "param_one" => "param_one",
-          "param_two" => 2
-        }),
-      status_code: 200
-    }
+    {:ok,
+     %Response{
+       body:
+       Poison.encode(%{
+             "param_one" => "param_one",
+             "param_two" => 2
+                     }),
+       status_code: 200
+     }}
   end
 end

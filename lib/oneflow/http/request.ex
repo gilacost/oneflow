@@ -1,6 +1,8 @@
 defmodule Oneflow.Http.Request do
   alias __MODULE__
 
+  alias Oneflow.Config
+
   require Logger
 
   defstruct [
@@ -41,6 +43,11 @@ defmodule Oneflow.Http.Request do
   "{\\"key\\":\\"value\\"}"
   """
   def body(%Request{} = req) do
-    Poison.encode!(req.body)
+    x = Poison.encode!(req.body)
+    if Config.log?() do
+      IO.puts("-------------")
+      IO.puts(x)
+    end
+    x
   end
 end

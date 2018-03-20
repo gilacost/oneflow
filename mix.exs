@@ -7,7 +7,7 @@ defmodule Oneflow.Mixfile do
       description:
         "Oneflow SDK that manages authentication and includes several structs for order management",
       app: :oneflow,
-      version: "0.1.2",
+      version: "0.2.0",
       elixir: "~> 1.6",
       elixirc_options: [warnings_as_errors: true],
       build_embedded: Mix.env() == :prod,
