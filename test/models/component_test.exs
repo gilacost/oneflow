@@ -19,7 +19,7 @@ defmodule Models.ComponentTest do
     attributes: %{
       corners: "rounded"
     },
-    extraData: %{},
+    extraData: %{}
   }
 
   test "valid component returns a oneflow component struct" do
@@ -28,6 +28,7 @@ defmodule Models.ComponentTest do
 
   test "component without required fields" do
     error_message = "#{@error_common} Oneflow.Models.Component: [:code, :path]"
+
     assert_raise ArgumentError, error_message, fn ->
       struct!(Component, %{})
     end

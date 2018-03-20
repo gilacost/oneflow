@@ -1,4 +1,5 @@
 ExUnit.start()
+
 defmodule Oneflow.ModelCase do
   use ExUnit.CaseTemplate
 
@@ -11,7 +12,19 @@ defmodule Oneflow.ModelCase do
   using do
     quote do
       alias Oneflow.Helpers
-      alias Oneflow.Models.{Address, Carrier, Component, Destination, Item, Order, OrderData, StockItem, Shipment}
+
+      alias Oneflow.Models.{
+        Address,
+        Carrier,
+        Component,
+        Destination,
+        Item,
+        Order,
+        OrderData,
+        StockItem,
+        Shipment
+      }
+
       import Oneflow.ModelCase
 
       @error_common "the following keys must also be given when building struct"

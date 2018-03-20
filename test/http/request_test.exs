@@ -4,5 +4,4 @@ defmodule Oneflow.Http.RequestTest do
   alias Oneflow.{Http.Request}
 
   doctest Oneflow.Http.Request
-
 end

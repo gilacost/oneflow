@@ -1,8 +1,7 @@
 defmodule Oneflow.Models.StockItem do
-
   use Oneflow.Models.Encoder
 
-  @enforce_keys [ :code, :quantity ]
+  @enforce_keys [:code, :quantity]
 
   defstruct [
     :code,
@@ -16,5 +15,4 @@ defmodule Oneflow.Models.StockItem do
     :weight,
     :sourceItemId
   ]
-
 end

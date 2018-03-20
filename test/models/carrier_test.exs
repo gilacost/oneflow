@@ -5,7 +5,7 @@ defmodule Models.CarrierTest do
   @valid_attributes %{
     code: "ups",
     service: "express",
-    alias: "CUSTOM-SHIPPING",
+    alias: "CUSTOM-SHIPPING"
   }
 
   test "valid carrier returns a oneflow carrier struct" do
@@ -14,11 +14,11 @@ defmodule Models.CarrierTest do
 
   test "carrier without required fields" do
     error_message = "#{@error_common} Oneflow.Models.Carrier: [:code, :service]"
+
     assert_raise ArgumentError, error_message, fn ->
       struct!(Carrier, %{})
     end
   end
 
   def get_valid_attributes(), do: @valid_attributes
-
 end

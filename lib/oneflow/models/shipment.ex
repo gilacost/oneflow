@@ -1,5 +1,4 @@
 defmodule Oneflow.Models.Shipment do
-
   use Oneflow.Models.Encoder
 
   @enforce_keys [:shipTo, :carrier]
@@ -15,5 +14,4 @@ defmodule Oneflow.Models.Shipment do
     :carrier,
     :returnAddress
   ]
-
 end

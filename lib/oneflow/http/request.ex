@@ -1,11 +1,14 @@
 defmodule Oneflow.Http.Request do
-
   alias __MODULE__
 
   require Logger
 
   defstruct [
-    :method, :path, :params, :body, :opts
+    :method,
+    :path,
+    :params,
+    :body,
+    :opts
   ]
 
   @doc """
@@ -16,8 +19,8 @@ defmodule Oneflow.Http.Request do
   iex> Request.new(:get, "/shipments")
   %Oneflow.Http.Request{body: %{}, method: :get, opts: [], params: %{}, path: "/shipments"}
   """
-  @spec new(atom, String.t, String.t, List.t, List.t) :: %Request{}
-  def new(method, path, params \\ %{}, payload \\ %{},  opts \\ []) do
+  @spec new(atom, String.t(), String.t(), List.t(), List.t()) :: %Request{}
+  def new(method, path, params \\ %{}, payload \\ %{}, opts \\ []) do
     %__MODULE__{
       method: method,
       path: path,
@@ -40,5 +43,4 @@ defmodule Oneflow.Http.Request do
   def body(%Request{} = req) do
     Poison.encode!(req.body)
   end
-
 end

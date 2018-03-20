@@ -21,6 +21,7 @@ defmodule Models.StockItemTest do
 
   test "stock item without required fields" do
     error_message = "#{@error_common} Oneflow.Models.StockItem: [:code, :quantity]"
+
     assert_raise ArgumentError, error_message, fn ->
       struct!(StockItem, %{})
     end

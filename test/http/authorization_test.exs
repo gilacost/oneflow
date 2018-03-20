@@ -13,9 +13,10 @@ defmodule Oneflow.Http.AuthorizationTest do
 
   describe "authorization header" do
     test "raises an error if path does not start with slash" do
-      request = %Request{ method: :get, path: "url?foo=bar"}
+      request = %Request{method: :get, path: "url?foo=bar"}
+
       assert_raise ArgumentError, "path must start with /", fn ->
-        Authorization.header_value(request, 123456789)
+        Authorization.header_value(request, 123_456_789)
       end
     end
   end

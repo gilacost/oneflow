@@ -14,7 +14,7 @@ defmodule Models.OrderDataTest do
     extraData: %{},
     items: [],
     stockItems: [],
-    shipments: [],
+    shipments: []
   }
 
   test "valid order data returns a oneflow order data struct" do
@@ -23,6 +23,7 @@ defmodule Models.OrderDataTest do
 
   test "order data without required fields" do
     error_message = "#{@error_common} Oneflow.Models.OrderData: [:sourceOrderId, :email]"
+
     assert_raise ArgumentError, error_message, fn ->
       struct!(OrderData, %{})
     end

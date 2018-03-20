@@ -22,12 +22,13 @@ defmodule Models.AddressTest do
   end
 
   test "address without required fields" do
-    error_message = "#{@error_common} Oneflow.Models.Address: [:name, :address1, :town, :postcode, :isoCountry]"
+    error_message =
+      "#{@error_common} Oneflow.Models.Address: [:name, :address1, :town, :postcode, :isoCountry]"
+
     assert_raise ArgumentError, error_message, fn ->
       struct!(Address, %{})
     end
   end
 
   def get_valid_attributes(), do: @valid_attributes
-
 end
