@@ -44,10 +44,12 @@ defmodule Oneflow.Http.Request do
   """
   def body(%Request{} = req) do
     x = Poison.encode!(req.body)
+
     if Config.log?() do
       IO.puts("-------------")
       IO.puts(x)
     end
+
     x
   end
 end

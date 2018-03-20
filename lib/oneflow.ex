@@ -90,5 +90,6 @@ defmodule Oneflow do
       {"x-oneflow-authorization", Authorization.header_value(req, timestamp)}
     ]
   end
+
   defp set_auth_headers(headers, _req), do: headers
 end
