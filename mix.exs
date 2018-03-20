@@ -9,6 +9,7 @@ defmodule Oneflow.Mixfile do
       app: :oneflow,
       version: "0.1.2",
       elixir: "~> 1.6",
+      elixirc_options: [warnings_as_errors: true],
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
       package: package(),

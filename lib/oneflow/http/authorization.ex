@@ -45,7 +45,7 @@ defmodule Oneflow.Http.Authorization do
   Gets the url path and preppeds /api to it.
   """
   @spec url_path(Request.t()) :: String.t()
-  defp url_path(%Request{} = req) do
+  def url_path(%Request{} = req) do
     req.path
     |> URI.parse()
     |> Map.get(:path, "")
@@ -57,7 +57,7 @@ defmodule Oneflow.Http.Authorization do
   then another empty space and then the timestamp.
   """
   @spec generate_string_to_sign(String.t(), Request.t(), integer) :: String.t()
-  defp generate_string_to_sign(url_path, %Request{} = req, timestamp) do
+  def generate_string_to_sign(url_path, %Request{} = req, timestamp) do
     req.method
     |> Atom.to_string()
     |> String.upcase()
@@ -68,7 +68,7 @@ defmodule Oneflow.Http.Authorization do
   Hashes the given string given to sign using the config secret as key.
   """
   @spec hmac(String.t()) :: String.t()
-  defp hmac(string_to_sign) do
+  def hmac(string_to_sign) do
     if Config.log?(), do: Logger.log(:info, "[oneflow][string_to_sign] #{string_to_sign}")
 
     :sha

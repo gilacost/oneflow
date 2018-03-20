@@ -15,7 +15,7 @@ defmodule Oneflow.Http.Request do
   Given a method and a path instantiates a oneflow request.
 
   ## Examples
-  iex> import Oneflow.Http.Request
+  iex> alias Oneflow.Http.Request
   iex> Request.new(:get, "/shipments")
   %Oneflow.Http.Request{body: %{}, method: :get, opts: [], params: %{}, path: "/shipments"}
   """
@@ -35,7 +35,7 @@ defmodule Oneflow.Http.Request do
   function encodes the body with poison.
 
   ## Examples
-  iex> import Oneflow.Http.Request
+  iex> alias Oneflow.Http.Request
   iex> request = Request.new(:get, "/shipments", %{}, %{"key" => "value"})
   iex> Request.body(request)
   "{\\"key\\":\\"value\\"}"
