@@ -1,8 +1,7 @@
 defmodule Oneflow.Models.OrderData do
-
   use Oneflow.Models.Encoder
 
-  @enforce_keys [ :sourceOrderId, :email ]
+  @enforce_keys [:sourceOrderId, :email]
 
   defstruct [
     :printType,
@@ -19,5 +18,4 @@ defmodule Oneflow.Models.OrderData do
     :stockItems,
     :shipments
   ]
-
 end

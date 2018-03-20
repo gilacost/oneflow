@@ -1,8 +1,7 @@
 defmodule Oneflow.Models.Address do
-
   use Oneflow.Models.Encoder
 
-  @enforce_keys [ :name, :address1, :town, :postcode, :isoCountry ]
+  @enforce_keys [:name, :address1, :town, :postcode, :isoCountry]
 
   defstruct [
     :name,
@@ -18,5 +17,4 @@ defmodule Oneflow.Models.Address do
     :email,
     :phone
   ]
-
 end

@@ -30,13 +30,13 @@ defmodule Oneflow.Http.Authorization do
   "token:6f88d384bd48daed9bf03efad5d5b5bdf89f3063"
 
   """
-  @spec header_value(Request.t, integer) :: String.t
+  @spec header_value(Request.t(), integer) :: String.t()
   def header_value(%Request{} = req, timestamp) do
     req
     |> url_path
     |> generate_string_to_sign(req, timestamp)
     |> hmac
-    |> prepend("#{Config.token}:", :string)
+    |> prepend("#{Config.token()}:", :string)
   end
 
   # private
@@ -44,10 +44,10 @@ defmodule Oneflow.Http.Authorization do
   @doc """
   Gets the url path and preppeds /api to it.
   """
-  @spec url_path(Request.t) :: String.t
-  defp url_path(%Request{} = req)  do
+  @spec url_path(Request.t()) :: String.t()
+  def url_path(%Request{} = req) do
     req.path
-    |> URI.parse
+    |> URI.parse()
     |> Map.get(:path, "")
     |> prepend("/api", :url)
   end
@@ -56,23 +56,24 @@ defmodule Oneflow.Http.Authorization do
   Forms an string with http method, empty space, then path without query string,
   then another empty space and then the timestamp.
   """
-  @spec generate_string_to_sign(String.t, Request.t, integer) :: String.t
-  defp generate_string_to_sign(url_path, %Request{} = req, timestamp) do
+  @spec generate_string_to_sign(String.t(), Request.t(), integer) :: String.t()
+  def generate_string_to_sign(url_path, %Request{} = req, timestamp) do
     req.method
-    |> Atom.to_string
-    |> String.upcase
+    |> Atom.to_string()
+    |> String.upcase()
     |> Kernel.<>(" #{url_path} #{timestamp}")
   end
 
   @doc """
   Hashes the given string given to sign using the config secret as key.
   """
-  @spec hmac(String.t) :: String.t
-  defp hmac(string_to_sign) do
-    if Config.log?, do: Logger.log(:info, "[oneflow][string_to_sign] #{string_to_sign}")
+  @spec hmac(String.t()) :: String.t()
+  def hmac(string_to_sign) do
+    if Config.log?(), do: Logger.log(:info, "[oneflow][string_to_sign] #{string_to_sign}")
+
     :sha
-    |> :crypto.hmac(Config.secret, string_to_sign)
-    |> Base.encode16
-    |> String.downcase
+    |> :crypto.hmac(Config.secret(), string_to_sign)
+    |> Base.encode16()
+    |> String.downcase()
   end
 end

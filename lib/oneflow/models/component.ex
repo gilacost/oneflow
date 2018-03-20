@@ -1,8 +1,7 @@
 defmodule Oneflow.Models.Component do
-
   use Oneflow.Models.Encoder
 
-  @enforce_keys [ :code, :path ]
+  @enforce_keys [:code, :path]
 
   defstruct [
     :code,
@@ -19,7 +18,6 @@ defmodule Oneflow.Models.Component do
     :duplicate,
     :barcode,
     :attributes,
-    :extraData,
+    :extraData
   ]
-
 end

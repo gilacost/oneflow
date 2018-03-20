@@ -22,6 +22,7 @@ defmodule Models.ItemTest do
 
   test "item without required fields" do
     error_message = "#{@error_common} Oneflow.Models.Item: [:sourceItemId, :sku]"
+
     assert_raise ArgumentError, error_message, fn ->
       struct!(Item, %{})
     end

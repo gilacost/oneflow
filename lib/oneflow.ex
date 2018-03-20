@@ -1,5 +1,5 @@
 defmodule Oneflow do
-  alias Oneflow.{Config, Http.Request, Http.Authorization, Models.Order}
+  alias Oneflow.{Config, Http.Request, Http.Authorization}
   alias HTTPoison.Response
 
   require Logger
@@ -25,7 +25,7 @@ defmodule Oneflow do
   end
 
   defp get(path, params, opts) do
-    Request.new(:get, path, params, [] , opts)
+    Request.new(:get, path, params, [], opts)
     |> call
   end
 
@@ -41,48 +41,55 @@ defmodule Oneflow do
     |> call
   end
 
-
   def call(%Request{} = req) do
     body = Request.body(req)
-    # qs = Request.query_string(req)
 
-    url = "#{Config.endpoint}#{req.path}"
+    url = "#{Config.endpoint()}#{req.path}"
 
-    timestamp = :os.system_time(:seconds)
+    headers =
+      Application.get_env(:oneflow, :auth_headers)
+      |> set_auth_headers(req)
+      |> Kernel.++([{"Content-Type", "application/json"}])
 
-    headers = [
-      {"Content-Type", "application/json"},
-      {"x-oneflow-date", timestamp},
-      {"x-oneflow-authorization", Authorization.header_value(req, timestamp)}
-    ]
+    if Config.log?() do
+      Logger.log(
+        :info,
+        "[oneflow] #{req.method} #{String.trim_trailing(req.path, "/")} #{inspect(req.params)}"
+      )
 
-    if Config.log? do
-      Logger.log(:info, "[oneflow] #{req.method} #{String.trim_trailing(req.path, "/")} #{inspect req.params}")
-      Logger.log(:info, "[oneflow][headers] #{inspect headers}")
+      Logger.log(:info, "[oneflow][headers] #{inspect(headers)}")
       Logger.log(:info, "[oneflow][url] #{url}")
-      Logger.log(:info, "[oneflow][body] #{inspect body}")
+      Logger.log(:info, "[oneflow][body] #{inspect(body)}")
     end
 
-
-
-    with {:ok, %Response{ body: body, status_code: status_code }} <- @client.request(req.method, url, body, headers, req.opts),
-         {:ok, parsed_body } <- Poison.decode(body, keys: :atoms) do
-
+    with {:ok, %Response{body: body, status_code: status_code}} <-
+           @client.request(req.method, url, body, headers, req.opts),
+         {:ok, parsed_body} <- Poison.decode(body, keys: :atoms) do
       case status_code do
-        code when code in [200,201] -> {:ok, parsed_body}
-        _   -> {:error, parsed_body}
+        code when code in [200, 201] -> {:ok, parsed_body}
+        _ -> {:error, parsed_body}
       end
-
     end
   end
 
-  def search(query, topic \\ "shipments", filters \\ [] ) when topic in @search_topics do
+  def search(query, topic \\ "shipments", filters \\ []) when topic in @search_topics do
     body = %{query: query, facetFilters: filters}
     post!("/search/facet/#{topic}", %{}, body)
   end
 
-  def submit_order(%Order{} = order) do
+  def submit_order(order) do
     body = order
     post!("/order", body, %{})
   end
+
+  defp set_auth_headers(nil, req) do
+    timestamp = :os.system_time(:seconds)
+
+    [
+      {"x-oneflow-date", timestamp},
+      {"x-oneflow-authorization", Authorization.header_value(req, timestamp)}
+    ]
+  end
+
+  defp set_auth_headers(headers, _req), do: headers
 end

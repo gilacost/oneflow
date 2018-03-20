@@ -12,6 +12,7 @@ defmodule Models.DestinationTest do
 
   test "destination without required fields" do
     error_message = "#{@error_common} Oneflow.Models.Destination: [:name]"
+
     assert_raise ArgumentError, error_message, fn ->
       struct!(Destination, %{})
     end

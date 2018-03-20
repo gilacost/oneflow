@@ -1,23 +1,28 @@
 defmodule Oneflow.Http.Request do
-
   alias __MODULE__
+
+  alias Oneflow.Config
 
   require Logger
 
   defstruct [
-    :method, :path, :params, :body, :opts
+    :method,
+    :path,
+    :params,
+    :body,
+    :opts
   ]
 
   @doc """
   Given a method and a path instantiates a oneflow request.
 
   ## Examples
-  iex> import Oneflow.Http.Request
+  iex> alias Oneflow.Http.Request
   iex> Request.new(:get, "/shipments")
   %Oneflow.Http.Request{body: %{}, method: :get, opts: [], params: %{}, path: "/shipments"}
   """
-  @spec new(atom, String.t, String.t, List.t, List.t) :: %Request{}
-  def new(method, path, params \\ %{}, payload \\ %{},  opts \\ []) do
+  @spec new(atom, String.t(), String.t(), List.t(), List.t()) :: %Request{}
+  def new(method, path, params \\ %{}, payload \\ %{}, opts \\ []) do
     %__MODULE__{
       method: method,
       path: path,
@@ -32,13 +37,19 @@ defmodule Oneflow.Http.Request do
   function encodes the body with poison.
 
   ## Examples
-  iex> import Oneflow.Http.Request
+  iex> alias Oneflow.Http.Request
   iex> request = Request.new(:get, "/shipments", %{}, %{"key" => "value"})
   iex> Request.body(request)
   "{\\"key\\":\\"value\\"}"
   """
   def body(%Request{} = req) do
-    Poison.encode!(req.body)
-  end
+    x = Poison.encode!(req.body)
 
+    if Config.log?() do
+      IO.puts("-------------")
+      IO.puts(x)
+    end
+
+    x
+  end
 end
